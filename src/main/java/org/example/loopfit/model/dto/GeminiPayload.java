@@ -1,7 +1,6 @@
 package org.example.loopfit.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import jakarta.servlet.http.Part;
 
 import java.util.List;
 
