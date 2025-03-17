@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <title><%= request.getAttribute("pageTitle") %></title>
-  <link href="<%= request.getContextPath() %>/assets/style.css" rel="stylesheet">
+  <link href="<%= request.getContextPath() %>/assets/index-style.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined" rel="stylesheet">
   <meta property="og:title" content="<%= request.getAttribute("ogTitle") %>" />
   <meta property="og:description" content="<%= request.getAttribute("ogDescription") %>" />
   <meta property="og:url" content="<%= request.getAttribute("ogPageUrl") %>" />
@@ -11,83 +13,64 @@
 </head>
 <body>
 <div class="container">
-  <header>
-    <h1>🏋️‍♂️ AI 운동 루틴 생성기</h1>
-    <p>개인 맞춤형 운동 루틴을 AI가 추천해드립니다!</p>
-  </header>
+  <div class="content-wrapper">
+    <header class="header">
+      <h1 class="gradient-title">맞춤형 운동 루틴 생성기</h1>
+      <p class="subtitle">목표에 맞는 완벽한 운동 계획을 AI가 생성해 드립니다</p>
+    </header>
 
-  <main>
-    <form method="post" class="workout-form">
-      <div class="form-group">
-        <label for="subject">운동 종목</label>
-        <select id="subject" name="subject" required>
-          <option value="">선택해주세요</option>
-          <option value="웨이트 트레이닝">웨이트 트레이닝</option>
-          <option value="유산소">유산소</option>
-          <option value="홈트레이닝">홈트레이닝</option>
-          <option value="혼합운동">혼합운동</option>
-          <option value="필라테스">필라테스</option>
-          <option value="요가">요가</option>
-        </select>
+    <main>
+      <div class="form-container">
+        <form method="post" class="workout-form">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="subject">운동 종목</label>
+              <input type="text" id="subject" name="subject" placeholder="운동 종목을 입력하세요" required>
+            </div>
+
+            <div class="form-group">
+              <label for="time">운동 시간 (분/일)</label>
+              <input type="text" id="time" name="time" placeholder="ex) 60" required>
+            </div>
+
+            <div class="form-group">
+              <label for="level">운동 수준</label>
+              <input type="text" id="level" name="level" placeholder="초급자/중급자/고급자" required>
+            </div>
+
+            <div class="form-group">
+              <label for="period">루틴 기간 (주)</label>
+              <input type="text" id="period" name="period" placeholder="ex) 4" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="purpose">운동 목표</label>
+            <input type="text" id="purpose" name="purpose" placeholder="체중 감량, 근육 증가, 체력 향상 등" required>
+          </div>
+
+          <div class="form-group">
+            <label for="constraints">제약 사항 (선택)</label>
+            <textarea id="constraints" name="constraints" placeholder="부상이나 특별히 고려해야 할 사항이 있다면 적어주세요." class="constraints-textarea"></textarea>
+          </div>
+
+          <div class="button-container">
+            <button type="submit" class="submit-btn">
+              <span class="material-symbols-outlined">fitness_center</span>
+              운동 루틴 생성하기
+            </button>
+          </div>
+        </form>
       </div>
+    </main>
 
-      <div class="form-group">
-        <label for="time">하루 운동 시간</label>
-        <select id="time" name="time" required>
-          <option value="">선택해주세요</option>
-          <option value="30분">30분</option>
-          <option value="1시간">1시간</option>
-          <option value="1시간 30분">1시간 30분</option>
-          <option value="2시간">2시간</option>
-          <option value="2시간 이상">2시간 이상</option>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label for="level">운동 수준</label>
-        <select id="level" name="level" required>
-          <option value="">선택해주세요</option>
-          <option value="초보자">초보자</option>
-          <option value="중급자">중급자</option>
-          <option value="고급자">고급자</option>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label for="period">루틴 기간</label>
-        <select id="period" name="period" required>
-          <option value="">선택해주세요</option>
-          <option value="1주일">1주일</option>
-          <option value="2주일">2주일</option>
-          <option value="4주일(1개월)">4주일(1개월)</option>
-          <option value="8주일(2개월)">8주일(2개월)</option>
-          <option value="12주일(3개월)">12주일(3개월)</option>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label for="purpose">운동 목표</label>
-        <select id="purpose" name="purpose" required>
-          <option value="">선택해주세요</option>
-          <option value="체중 감량">체중 감량</option>
-          <option value="근육량 증가">근육량 증가</option>
-          <option value="체력 향상">체력 향상</option>
-          <option value="건강 유지">건강 유지</option>
-          <option value="바디 리컴포지션">바디 리컴포지션</option>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label for="constraints">제약 사항 (선택)</label>
-        <input type="text" id="constraints" name="constraints" placeholder="부상, 운동 장비 제한 등 특이사항을 적어주세요">
-      </div>
-
-      <button type="submit" class="submit-btn">맞춤 루틴 생성하기</button>
-    </form>
-  </main>
+    <div class="disclaimer">
+      <p>AI가 생성한 운동 루틴은 참고용이며, 개인의 상황에 따라 전문가와 상담하세요.</p>
+    </div>
+  </div>
 
   <footer>
-    <p>© <%= java.time.Year.now() %> LoopFit - AI 기반 운동 루틴 생성기</p>
+    <p>© <%= java.time.Year.now() %> AI 운동 루틴 생성기 | 모든 권리 보유</p>
   </footer>
 </div>
 </body>

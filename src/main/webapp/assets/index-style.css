@@ -1,0 +1,205 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-blue: #3b82f6;
+    --primary-purple: #8b5cf6;
+    --primary-hover-blue: #2563eb;
+    --primary-hover-purple: #7c3aed;
+    --text-color: #1f2937;
+    --light-text: #4b5563;
+    --lighter-text: #9ca3af;
+    --background-color: #f9fafb;
+    --card-color: #ffffff;
+    --border-color: #e5e7eb;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --shadow-hover: rgba(0, 0, 0, 0.15);
+    --blue-50: #eff6ff;
+    --purple-50: #f5f3ff;
+}
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background: linear-gradient(to bottom right, var(--blue-50), var(--purple-50));
+    color: var(--text-color);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+.content-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* 헤더 스타일 */
+.header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.gradient-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    background-image: linear-gradient(to right, var(--primary-blue), var(--primary-purple));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.subtitle {
+    color: var(--light-text);
+    font-size: 1.125rem;
+}
+
+/* 폼 컨테이너 */
+.form-container {
+    background-color: var(--card-color);
+    border-radius: 0.75rem;
+    padding: 2rem;
+    box-shadow: 0 4px 6px var(--shadow-color);
+    transition: box-shadow 0.3s;
+}
+
+.form-container:hover {
+    box-shadow: 0 6px 12px var(--shadow-hover);
+}
+
+/* 폼 그리드 */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .form-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* 폼 요소 */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+input[type="text"],
+textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-family: 'Noto Sans KR', sans-serif;
+    transition: all 0.2s;
+}
+
+input[type="text"]:hover,
+textarea:hover {
+    border-color: var(--primary-blue);
+}
+
+input[type="text"]:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+.constraints-textarea {
+    height: 6rem;
+    resize: vertical;
+}
+
+/* 버튼 */
+.button-container {
+    padding-top: 1rem;
+}
+
+.submit-btn {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    background-image: linear-gradient(to right, var(--primary-blue), var(--primary-purple));
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1.125rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.submit-btn:hover {
+    background-image: linear-gradient(to right, var(--primary-hover-blue), var(--primary-hover-purple));
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.material-symbols-outlined {
+    margin-right: 0.5rem;
+}
+
+/* 면책 조항 */
+.disclaimer {
+    margin-top: 2rem;
+    text-align: center;
+    color: var(--lighter-text);
+    font-size: 0.875rem;
+}
+
+/* 푸터 */
+footer {
+    text-align: center;
+    margin-top: 2rem;
+    color: var(--light-text);
+    font-size: 0.875rem;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 640px) {
+    .gradient-title {
+        font-size: 2rem;
+    }
+
+    .form-container {
+        padding: 1.5rem;
+    }
+}
+
+/* 인쇄 스타일 */
+@media print {
+    .container {
+        padding: 0;
+    }
+
+    header {
+        margin-bottom: 1rem;
+    }
+
+    .disclaimer, footer {
+        display: none;
+    }
+}

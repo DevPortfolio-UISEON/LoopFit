@@ -26,7 +26,7 @@ body {
 }
 
 .container {
-    max-width: 800px;
+    max-width: 1000px;
     margin: 0 auto;
     padding: 2rem 1rem;
 }
@@ -100,10 +100,9 @@ select:focus, input[type="text"]:focus {
 
 /* 결과 페이지 스타일 */
 .result-container {
-    background-color: var(--card-color);
-    border-radius: 10px;
-    padding: 2rem;
-    box-shadow: 0 4px 6px var(--shadow-color);
+    background-color: transparent;
+    padding: 0;
+    box-shadow: none;
 }
 
 .routine-box {
