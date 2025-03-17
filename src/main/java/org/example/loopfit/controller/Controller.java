@@ -14,7 +14,7 @@ public abstract class Controller extends HttpServlet {
     protected final ObjectMapper mapper = new ObjectMapper();
 
     protected void view(HttpServletRequest req, HttpServletResponse resp, String name) throws ServletException,IOException {
-        String prefix="/WEB-INF/view/";
+        String prefix="/WEB-INF/views/";
         String surfix="jsp";
 
         req.getRequestDispatcher("%s/%s.%s".formatted(prefix,name,surfix)).forward(req, resp);
